@@ -4,12 +4,11 @@ namespace Kpzsproductions\Lipus\Controllers;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class HomeController
+class RulesController
 {
     public function index(Request $request): Response
     {
-        // Możesz załadować prosty helper do widoków
-        $content = $this->render(__DIR__ . '/../Views/home.php');
+        $content = $this->render(__DIR__ . '/../Views/rules.php');
         return new Response($content);
     }
 
@@ -20,4 +19,4 @@ class HomeController
         include $path;
         return ob_get_clean();
     }
-}
+} 

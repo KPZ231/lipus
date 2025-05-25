@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Narzędzie do postów Facebook - Łowisko Lipuś</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    h1 {
+      color: #2c3e50;
+      border-bottom: 2px solid #e67e22;
+      padding-bottom: 10px;
+    }
+    .tool-section {
+      background: #f8f9fa;
+      border-radius: 8px;
+      padding: 20px;
+      margin: 20px 0;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      margin-bottom: 15px;
+      font-size: 16px;
+    }
+    button {
+      background: #e67e22;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    button:hover {
+      background: #d35400;
+    }
+    .result {
+      margin-top: 15px;
+      padding: 15px;
+      background: #e8f4f8;
+      border-left: 4px solid #3498db;
+      display: none;
+    }
+    .result code {
+      display: block;
+      padding: 10px;
+      background: #fff;
+      border: 1px solid #ddd;
+      margin-top: 10px;
+      word-break: break-all;
+    }
+    .example {
+      background: #f5f5f5;
+      padding: 10px;
+      border-radius: 4px;
+      margin-top: 10px;
+    }
+    .instructions {
+      margin-bottom: 20px;
+    }
+    .instructions ol {
+      padding-left: 20px;
+    }
+    .back-link {
+      display: inline-block;
+      margin-top: 20px;
+      color: #2c3e50;
+      text-decoration: none;
+    }
+    .back-link:hover {
+      text-decoration: underline;
+    }
+    .settings-section {
+      margin-top: 30px;
+      border-top: 1px solid #ddd;
+      padding-top: 20px;
+    }
+    .code-box {
+      background: #f8f9fa;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      padding: 15px;
+      margin: 15px 0;
+      font-family: monospace;
+      white-space: pre-wrap;
+      word-break: break-all;
+    }
+    .highlight {
+      background-color: #ffffcc;
+      padding: 2px;
+    }
+    .collected-posts {
+      list-style: none;
+      padding: 0;
+      margin: 15px 0;
+    }
+    .collected-posts li {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+      padding: 8px;
+      background-color: #f5f5f5;
+      border-radius: 4px;
+    }
+    .collected-posts code {
+      flex: 1;
+      padding: 5px 10px;
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      margin-right: 10px;
+    }
+    .small-button {
+      background-color: #3498db;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      padding: 5px 10px;
+      margin: 0 5px;
+      cursor: pointer;
+      font-size: 12px;
+    }
+    .small-button:hover {
+      background-color: #2980b9;
+    }
+    button[onclick="clearCollectedPosts()"] {
+      background-color: #e74c3c;
+      margin-top: 10px;
+    }
+    button[onclick="clearCollectedPosts()"]:hover {
+      background-color: #c0392b;
+    }
+    button[onclick="testPostId"] {
+      background-color: #2ecc71;
+    }
+    button[onclick="testPostId"]:hover {
+      background-color: #27ae60;
+    }
+  </style>
+</head>
+<body>
+  <h1>Narzędzie do postów Facebook</h1>
+  
+  <div class="instructions">
+    <h2>Jak dodać posty z Facebook do galerii:</h2>
+    <ol>
+      <li>Znajdź posty ze zdjęciami na stronie Facebook łowiska</li>
+      <li>Kliknij datę posta, aby otworzyć go w nowej stronie</li>
+      <li>Skopiuj adres URL z przeglądarki</li>
+      <li>Wklej adres URL poniżej, aby uzyskać ID posta</li>
+      <li>Dodaj uzyskane ID do tablicy <code>facebookPostIds</code> w pliku <code>gallery.php</code></li>
+    </ol>
+  </div>
+  
+  <div class="tool-section">
+    <h2>Pobierz ID posta z adresu URL</h2>
+    <label for="postUrl">Adres URL posta Facebook:</label>
+    <input type="text" id="postUrl" placeholder="https://www.facebook.com/Lowiskolipus/posts/123456789012345">
+    <button onclick="extractPostId()">Pobierz ID</button>
+    
+    <div class="result" id="result">
+      <h3>ID posta:</h3>
+      <code id="postId"></code>
+      <p>Dodaj to ID do tablicy <code>facebookPostIds</code> w pliku <code>gallery.php</code></p>
+    </div>
+    
+    <div class="example">
+      <h3>Przykłady adresów URL:</h3>
+      <p><strong>Typowy adres posta:</strong> https://www.facebook.com/Lowiskolipus/posts/123456789012345</p>
+      <p><strong>Adres posta z ID strony:</strong> https://www.facebook.com/123456789/posts/987654321</p>
+      <p><strong>Adres z pfbid:</strong> https://www.facebook.com/Lowiskolipus/posts/pfbid02AB3CDefgHij</p>
+    </div>
+  </div>
+  
+  <div class="tool-section settings-section">
+    <h2>Ustawienia ID strony Facebook</h2>
+    <p>Aby zmienić ID strony Facebook, z której pobierane są posty, zaktualizuj poniższe zmienne w pliku <code>gallery.php</code>:</p>
+    
+    <div class="code-box">
+// W funkcji loadFacebookPosts:
+const <span class="highlight">pageId</span> = 'Lowiskolipus'; // Zmień na ID lub nazwę użytkownika swojej strony
+
+// W funkcji DOMContentLoaded:
+const <span class="highlight">pageId</span> = 'Lowiskolipus'; // To samo ID co w funkcji loadFacebookPosts
+    </div>
+    
+    <label for="pageId">ID lub nazwa strony Facebook:</label>
+    <input type="text" id="pageId" placeholder="Lowiskolipus">
+    <button onclick="testPageId()">Testuj ID strony</button>
+    
+    <div class="result" id="pageResult">
+      <h3>Link do strony:</h3>
+      <p id="pageLink"></p>
+      <p>Kliknij link powyżej, aby sprawdzić, czy strona istnieje. Jeśli tak, zmień zmienne <code>pageId</code> w pliku <code>gallery.php</code>.</p>
+    </div>
+  </div>
+  
+  <div class="tool-section settings-section">
+    <h2>Token dostępu do Facebook API</h2>
+    <p>Aby automatycznie pobierać posty z Facebooka, potrzebujesz tokenu dostępu do Facebook API. Wykonaj poniższe kroki, aby go uzyskać:</p>
+    
+    <ol>
+      <li>Przejdź do <a href="https://developers.facebook.com/tools/explorer/" target="_blank">Graph API Explorer</a></li>
+      <li>Zaloguj się na swoje konto Facebook, które ma uprawnienia administratora strony</li>
+      <li>Wybierz swoją aplikację z listy rozwijanej (lub utwórz nową)</li>
+      <li>Kliknij "Wygeneruj token dostępu"</li>
+      <li>Wybierz uprawnienia: <code>pages_read_engagement</code>, <code>pages_show_list</code></li>
+      <li>Kliknij "Generuj token dostępu"</li>
+      <li>Skopiuj wygenerowany token i wklej poniżej</li>
+    </ol>
+    
+    <label for="accessToken">Token dostępu:</label>
+    <input type="text" id="accessToken" placeholder="EAABZAqJK8ZAToBAM7y3...">
+    <button onclick="testAccessToken()">Testuj token</button>
+    
+    <div class="result" id="tokenResult">
+      <h3>Wynik testu tokenu:</h3>
+      <pre id="tokenTestResult"></pre>
+      <p>Jeśli test jest pomyślny, zastąp wartość <code>access_token</code> w funkcji <code>fetchPostsFromFacebook</code> w pliku <code>gallery.php</code>:</p>
+      <div class="code-box">
+access_token: '<span class="highlight" id="tokenToInsert"></span>', // Token dostępu do Facebook API
+      </div>
+    </div>
+  </div>
+  
+  <div class="tool-section settings-section">
+    <h2>Ręczne dodawanie ID postów</h2>
+    <p>Możesz również ręcznie dodać ID postów do funkcji <code>useDefaultPosts</code> w pliku <code>gallery.php</code>:</p>
+    
+    <div class="code-box">
+function useDefaultPosts() {
+  const defaultPostIds = [
+    '<span class="highlight" id="defaultPostsToInsert"></span>', // Przykładowe ID posta
+    // Dodaj więcej ID postów tutaj
+  ];
+  renderPosts(defaultPostIds);
+}
+    </div>
+    
+    <div id="collectedPostIds"></div>
+  </div>
+  
+  <a href="/gallery" class="back-link">← Wróć do galerii</a>
+  
+  <script>
+    // Tablica na zebrane ID postów
+    let collectedPostIds = [];
+    
+    // Ładowanie przy starcie strony
+    document.addEventListener('DOMContentLoaded', function() {
+      // Sprawdź, czy mamy zapisane ID postów
+      const savedIds = localStorage.getItem('collectedPostIds');
+      if (savedIds) {
+        try {
+          collectedPostIds = JSON.parse(savedIds);
+          updateCollectedPostsDisplay();
+        } catch (error) {
+          console.error('Błąd podczas wczytywania zapisanych ID postów:', error);
+        }
+      }
+    });
+    
+    function extractPostId() {
+      const urlInput = document.getElementById('postUrl').value.trim();
+      const resultDiv = document.getElementById('result');
+      const postIdElement = document.getElementById('postId');
+      
+      if (!urlInput) {
+        alert('Wprowadź adres URL posta Facebook');
+        return;
+      }
+      
+      let postId = '';
+      
+      // Próba wyodrębnienia ID posta z różnych formatów URL
+      if (urlInput.includes('/posts/')) {
+        // Format: /posts/123456789012345 lub /posts/pfbid02xyzAbc
+        const postsSegment = urlInput.split('/posts/')[1];
+        
+        if (postsSegment) {
+          // Usuń parametry zapytania, jeśli istnieją
+          postId = postsSegment.split('?')[0].split('/')[0];
+        }
+      } else if (urlInput.includes('/permalink/')) {
+        // Format: /permalink/123456789012345
+        const permalinkSegment = urlInput.split('/permalink/')[1];
+        
+        if (permalinkSegment) {
+          postId = permalinkSegment.split('?')[0].split('/')[0];
+        }
+      }
+      
+      if (postId) {
+        postIdElement.textContent = postId;
+        resultDiv.style.display = 'block';
+        
+        // Dodaj ID posta do kolekcji, jeśli jeszcze go nie ma
+        if (!collectedPostIds.includes(postId)) {
+          collectedPostIds.push(postId);
+          localStorage.setItem('collectedPostIds', JSON.stringify(collectedPostIds));
+          updateCollectedPostsDisplay();
+        }
+      } else {
+        alert('Nie udało się wyodrębnić ID posta z podanego adresu URL. Upewnij się, że wprowadzony URL jest poprawny.');
+      }
+    }
+    
+    function testPageId() {
+      const pageId = document.getElementById('pageId').value.trim();
+      const resultDiv = document.getElementById('pageResult');
+      const pageLinkElement = document.getElementById('pageLink');
+      
+      if (!pageId) {
+        alert('Wprowadź ID lub nazwę użytkownika strony Facebook');
+        return;
+      }
+      
+      const pageUrl = `https://www.facebook.com/${pageId}`;
+      pageLinkElement.innerHTML = `<a href="${pageUrl}" target="_blank">${pageUrl}</a>`;
+      resultDiv.style.display = 'block';
+    }
+    
+    function testAccessToken() {
+      const accessToken = document.getElementById('accessToken').value.trim();
+      const resultDiv = document.getElementById('tokenResult');
+      const resultElement = document.getElementById('tokenTestResult');
+      const tokenToInsert = document.getElementById('tokenToInsert');
+      
+      if (!accessToken) {
+        alert('Wprowadź token dostępu do Facebook API');
+        return;
+      }
+      
+      resultElement.textContent = 'Testowanie tokenu...';
+      resultDiv.style.display = 'block';
+      tokenToInsert.textContent = accessToken;
+      
+      // Sprawdź, czy SDK Facebooka jest załadowane
+      if (typeof FB !== 'undefined') {
+        // Wykonaj zapytanie testowe
+        FB.api('/me', { access_token: accessToken }, function(response) {
+          if (response && !response.error) {
+            resultElement.textContent = `Token działa! Zalogowano jako: ${response.name || 'Użytkownik'}`;
+            resultElement.style.color = 'green';
+          } else {
+            resultElement.textContent = `Błąd: ${response.error ? response.error.message : 'Nieznany błąd'}`;
+            resultElement.style.color = 'red';
+          }
+        });
+      } else {
+        // Jeśli SDK nie jest załadowane, wyświetl informację
+        resultElement.textContent = 'Nie można przetestować tokenu - SDK Facebooka nie jest załadowane. Możesz przetestować token bezpośrednio w Graph API Explorer.';
+        resultElement.style.color = 'orange';
+      }
+    }
+    
+    function updateCollectedPostsDisplay() {
+      const container = document.getElementById('collectedPostIds');
+      const defaultPostsElement = document.getElementById('defaultPostsToInsert');
+      
+      if (collectedPostIds.length === 0) {
+        container.innerHTML = '<p>Brak zebranych ID postów. Wyodrębnij ID posta z adresu URL powyżej.</p>';
+        defaultPostsElement.textContent = '123456789012345';
+        return;
+      }
+      
+      // Aktualizuj pole z domyślnymi postami
+      defaultPostsElement.textContent = collectedPostIds.join("', '");
+      
+      // Utwórz listę zebranych ID postów
+      let html = '<h3>Zebrane ID postów:</h3><ul class="collected-posts">';
+      
+      collectedPostIds.forEach((postId, index) => {
+        html += `
+          <li>
+            <code>${postId}</code>
+            <button onclick="removePostId(${index})" class="small-button">Usuń</button>
+            <button onclick="testPostId('${postId}')" class="small-button">Testuj</button>
+          </li>
+        `;
+      });
+      
+      html += '</ul>';
+      html += '<button onclick="clearCollectedPosts()" class="small-button">Wyczyść wszystkie</button>';
+      
+      container.innerHTML = html;
+    }
+    
+    function removePostId(index) {
+      if (index >= 0 && index < collectedPostIds.length) {
+        collectedPostIds.splice(index, 1);
+        localStorage.setItem('collectedPostIds', JSON.stringify(collectedPostIds));
+        updateCollectedPostsDisplay();
+      }
+    }
+    
+    function clearCollectedPosts() {
+      if (confirm('Czy na pewno chcesz usunąć wszystkie zebrane ID postów?')) {
+        collectedPostIds = [];
+        localStorage.setItem('collectedPostIds', JSON.stringify(collectedPostIds));
+        updateCollectedPostsDisplay();
+      }
+    }
+    
+    function testPostId(postId) {
+      const pageId = document.getElementById('pageId').value.trim() || 'Lowiskolipus';
+      const postUrl = `https://www.facebook.com/${pageId}/posts/${postId}`;
+      window.open(postUrl, '_blank');
+    }
+  </script>
+</body>
+</html> 

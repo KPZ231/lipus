@@ -7,7 +7,9 @@ require __DIR__ . '/../vendor/autoload.php';
 use FastRoute\RouteCollector;
 use function FastRoute\simpleDispatcher;
 use Kpzsproductions\Lipus\Controllers\HomeController;
-use Symfony\Component\HttpFoundation\Request;
+use Kpzsproductions\Lipus\Controllers\RulesController;
+use Kpzsproductions\Lipus\Controllers\GalleryController;
+use Symfony\Component\HttpFoundation\Request;   
 use Symfony\Component\HttpFoundation\Response;
 
 // 2) Pobierz Request (jeśli używasz HttpFoundation)
@@ -16,7 +18,8 @@ $request = Request::createFromGlobals();
 // 3) Zdefiniuj trasy
 $dispatcher = simpleDispatcher(function(RouteCollector $r) {
     $r->addRoute('GET', '/', [HomeController::class, 'index']);
-    // możesz dodać inne, np. $r->addRoute('POST', '/user', [UserController::class, 'store']);
+    $r->addRoute('GET', '/rules', [RulesController::class, 'index']);
+    $r->addRoute('GET', '/gallery', [GalleryController::class, 'index']);
 });
 
 // 4) Dispatch
