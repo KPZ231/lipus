@@ -24,6 +24,15 @@
                     <input type="text" id="title" name="title" required>
                 </div>
                 <div class="form-group">
+                    <label for="category">Kategoria:</label>
+                    <select id="category" name="category" required>
+                        <option value="landscape">Krajobrazy</option>
+                        <option value="fish">Złowione ryby</option>
+                        <option value="people">Wędkarze</option>
+                        <option value="infrastructure">Infrastruktura</option>
+                    </select>
+                </div>
+                <div class="form-group">
                     <label for="description">Opis:</label>
                     <textarea id="description" name="description" required></textarea>
                 </div>

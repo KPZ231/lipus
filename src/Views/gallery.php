@@ -62,67 +62,55 @@
       </div>
       
       <div class="gallery-categories">
-        <button class="gallery-filter active" data-filter="all">Wszystkie</button>
-        <button class="gallery-filter" data-filter="landscape">Krajobrazy</button>
-        <button class="gallery-filter" data-filter="fish">Złowione ryby</button>
-        <button class="gallery-filter" data-filter="people">Wędkarze</button>
-        <button class="gallery-filter" data-filter="infrastructure">Infrastruktura</button>
+        <a href="?category=all" class="gallery-filter <?php echo ($currentCategory === 'all') ? 'active' : ''; ?>">Wszystkie</a>
+        <a href="?category=landscape" class="gallery-filter <?php echo ($currentCategory === 'landscape') ? 'active' : ''; ?>">Krajobrazy</a>
+        <a href="?category=fish" class="gallery-filter <?php echo ($currentCategory === 'fish') ? 'active' : ''; ?>">Złowione ryby</a>
+        <a href="?category=people" class="gallery-filter <?php echo ($currentCategory === 'people') ? 'active' : ''; ?>">Wędkarze</a>
+        <a href="?category=infrastructure" class="gallery-filter <?php echo ($currentCategory === 'infrastructure') ? 'active' : ''; ?>">Infrastruktura</a>
       </div>
       
       <div class="gallery-container">
-        <!-- Zdjęcia będą pobierane dynamicznie z Facebooka -->
-        <!-- Domyślne zdjęcia do czasu załadowania z FB -->
-        <div class="gallery-item landscape">
-          <a href="https://via.placeholder.com/800x600.png?text=Lowisko+Lipus+1" data-lightbox="gallery" data-title="Piękny wschód słońca nad łowiskiem">
-            <img src="https://via.placeholder.com/400x300.png?text=Lowisko+Lipus+1" alt="Wschód słońca nad łowiskiem" loading="lazy">
-            <div class="gallery-caption">Wschód słońca nad łowiskiem</div>
-          </a>
-        </div>
-        
-        <div class="gallery-item fish">
-          <a href="https://via.placeholder.com/800x600.png?text=Karp+8.5kg" data-lightbox="gallery" data-title="Karp - 8.5 kg, złowiony przez Jana Kowalskiego">
-            <img src="https://via.placeholder.com/400x300.png?text=Karp+8.5kg" alt="Karp złowiony w łowisku Lipuś" loading="lazy">
-            <div class="gallery-caption">Karp - 8.5 kg</div>
-          </a>
-        </div>
-        
-        <div class="gallery-item infrastructure">
-          <a href="https://via.placeholder.com/800x600.png?text=Pomost+wedkarski" data-lightbox="gallery" data-title="Pomost wędkarski na naszym łowisku">
-            <img src="https://via.placeholder.com/400x300.png?text=Pomost+wedkarski" alt="Pomost wędkarski" loading="lazy">
-            <div class="gallery-caption">Nasz pomost wędkarski</div>
-          </a>
-        </div>
-        
-        <div class="gallery-item people">
-          <a href="https://via.placeholder.com/800x600.png?text=Rodzinne+wedkowanie" data-lightbox="gallery" data-title="Rodzinne wędkowanie w Lipuś">
-            <img src="https://via.placeholder.com/400x300.png?text=Rodzinne+wedkowanie" alt="Rodzina wędkująca nad łowiskiem" loading="lazy">
-            <div class="gallery-caption">Rodzinne wędkowanie</div>
-          </a>
-        </div>
-        
-        <!-- Tutaj będą wstawiane zdjęcia z Facebooka przez JavaScript -->
-      </div>
-      
-      <div class="facebook-feed">
-        <h3><i class="fab fa-facebook"></i> Zdjęcia z naszego Facebooka</h3>
-        <p>Więcej zdjęć znajdziesz na naszym profilu Facebook. Odwiedź nas i polub naszą stronę!</p>
-        <div class="facebook-container">
-          <div class="fb-loading">
-            <i class="fas fa-spinner fa-spin"></i>
-            <span>Ładowanie postów z Facebooka...</span>
-          </div>
-          <div id="fb-gallery" class="fb-gallery-grid"></div>
-        </div>
-        <a href="https://www.facebook.com/${pageId}/photos" target="_blank" rel="noopener noreferrer" class="btn-primary" id="facebook-more-link">
-          <i class="fab fa-facebook"></i> Zobacz więcej na Facebooku
-        </a>
+        <?php if (!empty($posts)): ?>
+          <?php foreach ($posts as $post): ?>
+            <?php
+            // Debug information
+            error_log('Processing post in view: ' . print_r($post, true));
+            ?>
+            <div class="gallery-item">
+              <?php if (isset($post['image']) && !empty($post['image'])): ?>
+                <a href="/<?php echo htmlspecialchars($post['image']); ?>" 
+                   data-lightbox="gallery" 
+                   data-title="<?php echo htmlspecialchars($post['title'] ?? ''); ?>">
+                  <img src="/<?php echo htmlspecialchars($post['image']); ?>" 
+                       alt="<?php echo htmlspecialchars($post['title'] ?? 'Zdjęcie z łowiska Lipuś'); ?>" 
+                       class="gallery-image"
+                       loading="lazy"
+                       onerror="this.onerror=null; this.src='/assets/images/placeholder.jpg'; console.error('Failed to load image: ' + this.src);">
+                  <div class="gallery-caption">
+                    <h3><?php echo htmlspecialchars($post['title'] ?? ''); ?></h3>
+                    <?php if (!empty($post['description'])): ?>
+                      <p class="description"><?php echo htmlspecialchars($post['description']); ?></p>
+                    <?php endif; ?>
+                    <span class="category-tag"><?php echo $controller->getCategoryName($post['category'] ?? 'landscape'); ?></span>
+                  </div>
+                </a>
+              <?php else: ?>
+                <div class="error-message">
+                  <?php error_log('Post without image in view: ' . print_r($post, true)); ?>
+                  <p>Brak zdjęcia</p>
+                </div>
+              <?php endif; ?>
+            </div>
+          <?php endforeach; ?>
+        <?php else: ?>
+          <p class="no-posts">Brak zdjęć w tej kategorii. Wkrótce dodamy nowe!</p>
+        <?php endif; ?>
       </div>
       
       <div class="gallery-upload">
         <h3>Pokaż swoje zdjęcia</h3>
         <p>Złowiłeś u nas piękną rybę? Zrobiłeś wspaniałe zdjęcie naszego łowiska? Podziel się swoimi zdjęciami!</p>
-        <p>Wyślij swoje zdjęcia na <a href="mailto:zdjecia@lowiskolipus.pl">zdjecia@lowiskolipus.pl</a> lub oznacz nas na Facebooku.</p>
-        <p class="admin-link"><small><a href="/facebook-helper.html" target="_blank">Narzędzie administratora</a></small></p>
+        <p>Wyślij swoje zdjęcia na <a href="mailto:zdjecia@lowiskolipus.pl">zdjecia@lowiskolipus.pl</a></p>
       </div>
     </div>
   </section>
@@ -166,14 +154,6 @@
 </button>
 
 <!-- JavaScript -->
-<script>
-  // Pass PHP variables to JavaScript
-  window.fbConfig = {
-    pageId: '<?php echo htmlspecialchars($fbPageId); ?>',
-    accessToken: '<?php echo htmlspecialchars($fbAccessToken); ?>'
-  };
-</script>
-<script src="/assets/js/facebook-gallery.js"></script>
 <script src="/assets/js/home.js"></script>
 <!-- Lightbox JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox-plus-jquery.min.js"></script>

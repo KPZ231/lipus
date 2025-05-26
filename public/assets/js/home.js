@@ -114,24 +114,24 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Image lazy loading
-    if ('loading' in HTMLImageElement.prototype) {
-        const images = document.querySelectorAll('img[loading="lazy"]');
-        images.forEach(img => {
-            img.src = img.dataset.src;
+    // Gallery image handling
+    const galleryImages = document.querySelectorAll('.gallery-image');
+    galleryImages.forEach((img) => {
+        // Verify image source
+        if (!img.src || img.src === 'undefined' || img.src.includes('undefined')) {
+            console.error('Invalid image source:', img.src);
+            img.src = '/assets/images/placeholder.jpg';
+        }
+        
+        // Add loading animation
+        img.addEventListener('load', function() {
+            this.classList.add('loaded');
         });
-    } else {
-        // Fallback for browsers that don't support lazy loading
-        const script = document.createElement('script');
-        script.src = 'https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js';
-        document.body.appendChild(script);
-    }
-    
-    // Add fade-in animation to gallery images
-    const galleryImages = document.querySelectorAll('#gallery figure');
-    galleryImages.forEach((image, index) => {
-        image.classList.add('fade-in');
-        image.style.animationDelay = `${0.2 * index}s`;
+        
+        img.addEventListener('error', function() {
+            console.error('Failed to load image:', this.src);
+            this.src = '/assets/images/placeholder.jpg';
+        });
     });
     
     // Add accessibility features

@@ -88,9 +88,10 @@ class AdminController
 
         $title = $request->request->get('title');
         $description = $request->request->get('description');
+        $category = $request->request->get('category');
         $image = $request->files->get('image');
 
-        if (!$title || !$description || !$image) {
+        if (!$title || !$description || !$image || !$category) {
             return new JsonResponse(['error' => 'Missing required fields'], 400);
         }
 
@@ -102,6 +103,7 @@ class AdminController
                 'id' => uniqid(),
                 'title' => $title,
                 'description' => $description,
+                'category' => $category,
                 'image' => '/uploads/posts/' . $fileName,
                 'created_at' => date('Y-m-d H:i:s')
             ];
@@ -122,6 +124,43 @@ class AdminController
 
         $posts = $this->loadPosts();
         return new JsonResponse(['posts' => $posts]);
+    }
+
+    public function deletePost(Request $request): JsonResponse
+    {
+        if (!$this->isAuthenticated()) {
+            return new JsonResponse(['error' => 'Unauthorized'], 401);
+        }
+
+        $postId = $request->request->get('id');
+        if (!$postId) {
+            return new JsonResponse(['error' => 'Post ID is required'], 400);
+        }
+
+        try {
+            $posts = $this->loadPosts();
+            $postIndex = array_search($postId, array_column($posts, 'id'));
+            
+            if ($postIndex === false) {
+                return new JsonResponse(['error' => 'Post not found'], 404);
+            }
+
+            // Delete the image file
+            $imagePath = dirname(dirname(__DIR__)) . '/public' . $posts[$postIndex]['image'];
+            if (file_exists($imagePath)) {
+                unlink($imagePath);
+            }
+
+            // Remove the post from the array
+            array_splice($posts, $postIndex, 1);
+
+            // Save the updated posts array
+            file_put_contents($this->postsDirectory . '/posts.json', json_encode($posts, JSON_PRETTY_PRINT));
+
+            return new JsonResponse(['success' => true]);
+        } catch (\Exception $e) {
+            return new JsonResponse(['error' => $e->getMessage()], 500);
+        }
     }
 
     private function generateJWT(): string
