@@ -9,6 +9,7 @@ use function FastRoute\simpleDispatcher;
 use Kpzsproductions\Lipus\Controllers\HomeController;
 use Kpzsproductions\Lipus\Controllers\RulesController;
 use Kpzsproductions\Lipus\Controllers\GalleryController;
+use Kpzsproductions\Lipus\Controllers\AdminController;
 use Symfony\Component\HttpFoundation\Request;   
 use Symfony\Component\HttpFoundation\Response;
 
@@ -20,6 +21,16 @@ $dispatcher = simpleDispatcher(function(RouteCollector $r) {
     $r->addRoute('GET', '/', [HomeController::class, 'index']);
     $r->addRoute('GET', '/rules', [RulesController::class, 'index']);
     $r->addRoute('GET', '/gallery', [GalleryController::class, 'index']);
+    // Dodajemy nową trasę dla API Facebooka
+    $r->addRoute('GET', '/api/facebook/posts', [GalleryController::class, 'getFacebookPosts']);
+    
+    // Admin routes
+    $r->addRoute('GET', '/admin/login', [AdminController::class, 'loginPage']);
+    $r->addRoute('POST', '/admin/login', [AdminController::class, 'login']);
+    $r->addRoute('GET', '/admin/panel', [AdminController::class, 'panel']);
+    $r->addRoute('GET', '/admin/logout', [AdminController::class, 'logout']);
+    $r->addRoute('GET', '/admin/posts', [AdminController::class, 'getPosts']);
+    $r->addRoute('POST', '/admin/posts/add', [AdminController::class, 'addPost']);
 });
 
 // 4) Dispatch
