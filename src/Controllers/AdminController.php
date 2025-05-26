@@ -86,13 +86,31 @@ class AdminController
             return new JsonResponse(['error' => 'Unauthorized'], 401);
         }
 
+        // Debug incoming data
+        error_log('Received POST data: ' . print_r($request->request->all(), true));
+        error_log('Received FILES: ' . print_r($request->files->all(), true));
+
         $title = $request->request->get('title');
         $description = $request->request->get('description');
         $category = $request->request->get('category');
         $image = $request->files->get('image');
 
+        // Debug required fields
+        error_log('Title: ' . ($title ?? 'null'));
+        error_log('Description: ' . ($description ?? 'null'));
+        error_log('Category: ' . ($category ?? 'null'));
+        error_log('Image: ' . ($image ? 'present' : 'null'));
+
         if (!$title || !$description || !$image || !$category) {
-            return new JsonResponse(['error' => 'Missing required fields'], 400);
+            $missing = [];
+            if (!$title) $missing[] = 'title';
+            if (!$description) $missing[] = 'description';
+            if (!$category) $missing[] = 'category';
+            if (!$image) $missing[] = 'image';
+            
+            return new JsonResponse([
+                'error' => 'Missing required fields: ' . implode(', ', $missing)
+            ], 400);
         }
 
         try {
@@ -104,7 +122,7 @@ class AdminController
                 'title' => $title,
                 'description' => $description,
                 'category' => $category,
-                'image' => '/uploads/posts/' . $fileName,
+                'image' => 'uploads/posts/' . $fileName,
                 'created_at' => date('Y-m-d H:i:s')
             ];
 
@@ -112,6 +130,7 @@ class AdminController
 
             return new JsonResponse(['success' => true, 'post' => $post]);
         } catch (\Exception $e) {
+            error_log('Error in addPost: ' . $e->getMessage());
             return new JsonResponse(['error' => $e->getMessage()], 500);
         }
     }

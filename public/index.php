@@ -45,8 +45,9 @@ $dispatcher = simpleDispatcher(function(RouteCollector $r) {
     $r->addRoute('POST', '/admin/login', [AdminController::class, 'login']);
     $r->addRoute('GET', '/admin/panel', [AdminController::class, 'panel']);
     $r->addRoute('GET', '/admin/logout', [AdminController::class, 'logout']);
-    $r->addRoute('GET', '/admin/posts', [AdminController::class, 'getPosts']);
-    $r->addRoute('POST', '/admin/posts/add', [AdminController::class, 'addPost']);
+    $r->addRoute('GET', '/admin/get-posts', [AdminController::class, 'getPosts']);
+    $r->addRoute('POST', '/admin/add-post', [AdminController::class, 'addPost']);
+    $r->addRoute('POST', '/admin/delete-post', [AdminController::class, 'deletePost']);
 });
 
 // 4) Dispatch

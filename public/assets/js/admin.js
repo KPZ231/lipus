@@ -11,7 +11,42 @@ document.addEventListener('DOMContentLoaded', function() {
     const imagePreview = document.getElementById('imagePreview');
     const postError = document.getElementById('postError');
     if (addPostForm) {
-        addPostForm.addEventListener('submit', handleAddPost);
+        addPostForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            // Create FormData object
+            const formData = new FormData(this);
+            
+            // Debug form data
+            console.log('Submitting form data:');
+            for (let pair of formData.entries()) {
+                console.log(pair[0] + ': ' + pair[1]);
+            }
+
+            try {
+                const response = await fetch('/admin/add-post', {
+                    method: 'POST',
+                    body: formData // FormData will automatically set the correct Content-Type
+                });
+
+                // Debug response
+                console.log('Response status:', response.status);
+                const data = await response.json();
+                console.log('Response data:', data);
+
+                if (data.success) {
+                    addPostForm.reset();
+                    imagePreview.innerHTML = '';
+                    loadPosts();
+                    showMessage('Post został dodany pomyślnie!', false);
+                } else {
+                    showMessage(data.error || 'Wystąpił błąd podczas dodawania posta.', true);
+                }
+            } catch (error) {
+                console.error('Error submitting form:', error);
+                showMessage('Wystąpił błąd podczas dodawania posta.', true);
+            }
+        });
         loadPosts();
 
         // Image preview
@@ -126,40 +161,6 @@ async function handleLogin(e) {
         }
     } catch (error) {
         errorDiv.textContent = 'Wystąpił błąd podczas logowania';
-        errorDiv.style.display = 'block';
-    }
-}
-
-async function handleAddPost(e) {
-    e.preventDefault();
-    const errorDiv = document.getElementById('postError');
-    
-    try {
-        const formData = new FormData();
-        formData.append('title', document.getElementById('title').value);
-        formData.append('description', document.getElementById('description').value);
-        formData.append('image', document.getElementById('image').files[0]);
-
-        const response = await fetch('/admin/posts/add', {
-            method: 'POST',
-            headers: {
-                'Authorization': `Bearer ${localStorage.getItem('adminToken')}`
-            },
-            body: formData
-        });
-
-        const data = await response.json();
-
-        if (response.ok) {
-            document.getElementById('addPostForm').reset();
-            document.getElementById('imagePreview').innerHTML = '';
-            loadPosts();
-        } else {
-            errorDiv.textContent = data.error || 'Błąd podczas dodawania posta';
-            errorDiv.style.display = 'block';
-        }
-    } catch (error) {
-        errorDiv.textContent = 'Wystąpił błąd podczas dodawania posta';
         errorDiv.style.display = 'block';
     }
 }
