@@ -153,11 +153,15 @@ class AdminController
         $title = $request->request->get('title');
         $content = $request->request->get('content');
         $important = $request->request->get('important') === 'true' || $request->request->get('important') === '1';
+        $eventDate = $request->request->get('event_date');
+        $eventTime = $request->request->get('event_time');
 
         // Debug required fields
         error_log('Title: ' . ($title ?? 'null'));
         error_log('Content: ' . ($content ?? 'null'));
         error_log('Important: ' . ($important ? 'true' : 'false'));
+        error_log('Event Date: ' . ($eventDate ?? 'null'));
+        error_log('Event Time: ' . ($eventTime ?? 'null'));
 
         if (!$title || !$content) {
             $missing = [];
@@ -178,6 +182,16 @@ class AdminController
                 'created_at' => date('Y-m-d H:i:s'),
                 'type' => 'regular'
             ];
+
+            // Add event date if provided
+            if (!empty($eventDate)) {
+                $post['event_date'] = $eventDate;
+                
+                // Add event time if provided
+                if (!empty($eventTime)) {
+                    $post['event_time'] = $eventTime;
+                }
+            }
 
             $this->savePost($post);
 

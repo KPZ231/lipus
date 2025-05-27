@@ -139,6 +139,14 @@
                         <label for="postContent"><i class="fas fa-align-left"></i> Treść:</label>
                         <textarea id="postContent" name="content" required placeholder="Wprowadź treść posta" rows="6"></textarea>
                     </div>
+                    <div class="form-group">
+                        <label for="postEventDate"><i class="fas fa-calendar-alt"></i> Data wydarzenia (opcjonalnie):</label>
+                        <div class="date-time-inputs">
+                            <input type="date" id="postEventDate" name="event_date" placeholder="Wybierz datę wydarzenia">
+                            <input type="time" id="postEventTime" name="event_time" placeholder="Wybierz godzinę wydarzenia">
+                        </div>
+                        <small>Wybierz datę i godzinę jeśli post dotyczy przyszłego wydarzenia</small>
+                    </div>
                     <div class="form-group checkbox-group">
                         <label for="postImportant">
                             <input type="checkbox" id="postImportant" name="important" value="true">

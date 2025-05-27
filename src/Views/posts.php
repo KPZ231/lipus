@@ -60,6 +60,24 @@
             color: #777;
             font-style: italic;
         }
+        
+        .post-event-date {
+            background-color: #4a6fa5;
+            color: white;
+            display: inline-block;
+            padding: 8px 15px;
+            border-radius: 4px;
+            margin: 10px 0;
+            font-size: 0.9rem;
+        }
+        
+        .post-event-date i {
+            margin-right: 5px;
+        }
+        
+        .post.important .post-event-date {
+            background-color: #e74c3c;
+        }
     </style>
 </head>
 <body>
@@ -103,6 +121,16 @@
                             <i class="far fa-calendar-alt"></i> 
                             <?php echo date('d.m.Y H:i', strtotime($post['created_at'])); ?>
                         </time>
+                        <?php if (isset($post['event_date']) && !empty($post['event_date'])): ?>
+                        <div class="post-event-date">
+                            <i class="fas fa-calendar-day"></i> 
+                            <strong>Data wydarzenia:</strong> 
+                            <?php echo date('d.m.Y', strtotime($post['event_date'])); ?>
+                            <?php if (isset($post['event_time']) && !empty($post['event_time'])): ?>
+                                o <?php echo htmlspecialchars($post['event_time']); ?>
+                            <?php endif; ?>
+                        </div>
+                        <?php endif; ?>
                         <div class="post-content">
                             <?php echo nl2br(htmlspecialchars($post['content'] ?? '')); ?>
                         </div>

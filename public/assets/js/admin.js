@@ -150,6 +150,19 @@ document.addEventListener('DOMContentLoaded', function() {
         const importantCheckbox = document.getElementById('postImportant');
         formData.set('important', importantCheckbox.checked ? 'true' : 'false');
         
+        // Handle event date and time (only include if it's not empty)
+        const eventDateInput = document.getElementById('postEventDate');
+        const eventTimeInput = document.getElementById('postEventTime');
+        
+        if (eventDateInput && eventDateInput.value) {
+            formData.set('event_date', eventDateInput.value);
+            
+            // Include time if provided
+            if (eventTimeInput && eventTimeInput.value) {
+                formData.set('event_time', eventTimeInput.value);
+            }
+        }
+        
         try {
             const response = await fetch('/admin/add-regular-post', {
                 method: 'POST',
@@ -325,11 +338,23 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 recentPosts.forEach(post => {
                     if (post.type === 'regular') {
+                        let eventDateHtml = '';
+                        if (post.event_date) {
+                            let eventDateText = formatDate(post.event_date, false);
+                            
+                            // Add time if available
+                            if (post.event_time) {
+                                eventDateText += ` o ${post.event_time}`;
+                            }
+                            
+                            eventDateHtml = `<p class="event-date"><i class="fas fa-calendar-day"></i> Data wydarzenia: ${eventDateText}</p>`;
+                        }
+                        
                         html += `
                         <div class="recent-post-item">
                             <div class="recent-post-info">
                                 <h4>${post.title}</h4>
-                                <p><i class="fas fa-file-alt"></i> Post tekstowy | <i class="far fa-calendar-alt"></i> ${formatDate(post.created_at)}</p>
+                                <p><i class="fas fa-file-alt"></i> Post tekstowy | ${eventDateHtml}<i class="far fa-calendar-alt"></i> ${formatDate(post.created_at)}</p>
                             </div>
                         </div>
                         `;
@@ -383,12 +408,25 @@ document.addEventListener('DOMContentLoaded', function() {
                         const importantBadge = post.important ? 
                             '<span class="important-badge"><i class="fas fa-exclamation-circle"></i> Ważny</span>' : '';
                         
+                        let eventDateHtml = '';
+                        if (post.event_date) {
+                            let eventDateText = formatDate(post.event_date, false);
+                            
+                            // Add time if available
+                            if (post.event_time) {
+                                eventDateText += ` o ${post.event_time}`;
+                            }
+                            
+                            eventDateHtml = `<p class="event-date"><i class="fas fa-calendar-day"></i> Data wydarzenia: ${eventDateText}</p>`;
+                        }
+                        
                         html += `
                         <div class="post-item ${post.important ? 'important' : ''}">
                             <div class="post-info">
                                 <h3>${post.title} ${importantBadge}</h3>
                                 <p class="post-type"><i class="fas fa-file-alt"></i> Post tekstowy</p>
                                 <p class="date"><i class="far fa-calendar-alt"></i> ${formatDate(post.created_at)}</p>
+                                ${eventDateHtml}
                                 <p class="content">${post.content}</p>
                                 <button onclick="deletePost('${post.id}')" class="btn-delete">
                                     <i class="fas fa-trash"></i> Usuń
@@ -461,15 +499,16 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    function formatDate(dateString) {
+    function formatDate(dateString, includeTime = true) {
         const date = new Date(dateString);
-        return date.toLocaleString('pl-PL', {
+        const options = {
             day: '2-digit',
             month: '2-digit',
             year: 'numeric',
-            hour: '2-digit',
-            minute: '2-digit'
-        });
+            hour: includeTime ? '2-digit' : undefined,
+            minute: includeTime ? '2-digit' : undefined
+        };
+        return date.toLocaleString('pl-PL', options);
     }
 
     function getCategoryName(category) {
