@@ -41,6 +41,7 @@
   <ul>
     <li><a href="/">Home</a></li>
     <li><a href="/gallery" aria-current="page">Galeria</a></li>
+    <li><a href="/posts">Posty</a></li>
     <li><a href="/rules">Regulamin</a></li>
     <li><a href="/#prices">Cennik</a></li>
     <li><a href="/#about">O nas</a></li>
@@ -134,6 +135,7 @@
         <ul>
           <li><a href="/rules">Regulamin</a></li>
           <li><a href="/gallery">Galeria</a></li>
+          <li><a href="/posts">Posty</a></li>
           <li><a href="/privacy-policy">Polityka prywatności</a></li>
           <li><a href="/terms">Warunki korzystania</a></li>
         </ul>

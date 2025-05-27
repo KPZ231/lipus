@@ -39,7 +39,14 @@ class PostsController
         if (!file_exists($postsFile)) {
             return [];
         }
-        return json_decode(file_get_contents($postsFile), true) ?? [];
+        $posts = json_decode(file_get_contents($postsFile), true) ?? [];
+        
+        // Filter out gallery posts - only show regular posts on the posts page
+        $posts = array_filter($posts, function($post) {
+            return isset($post['type']) && $post['type'] === 'regular';
+        });
+        
+        return $posts;
     }
 
     private function render(string $path, array $vars = []): string

@@ -39,6 +39,7 @@
   <ul>
     <li><a href="/">Home</a></li>
     <li><a href="/gallery">Galeria</a></li>
+    <li><a href="/posts">Posty</a></li>
     <li><a href="/rules" aria-current="page">Regulamin</a></li>
     <li><a href="/#prices">Cennik</a></li>
     <li><a href="/#about">O nas</a></li>

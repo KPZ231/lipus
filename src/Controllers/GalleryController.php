@@ -68,6 +68,11 @@ class GalleryController
                 return [];
             }
 
+            // Filter only gallery posts
+            $posts = array_filter($posts, function($post) {
+                return isset($post['type']) && $post['type'] === 'gallery';
+            });
+
             // Filter posts by category if specified
             if ($category !== 'all') {
                 $posts = array_filter($posts, function($post) use ($category) {

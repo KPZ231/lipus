@@ -63,18 +63,33 @@
     </style>
 </head>
 <body>
-    <header>
-        <?php include __DIR__ . '/partials/navigation.php'; ?>
+    <!-- Skip to content link for accessibility -->
+    <a href="#main-content" class="skip-link">Przejdź do treści</a>
+
+    <!-- Navigation Bar -->
+    <nav aria-label="Menu główne">
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/gallery">Galeria</a></li>
+        <li><a href="/posts" aria-current="page">Posty</a></li>
+        <li><a href="/rules">Regulamin</a></li>
+        <li><a href="/#prices">Cennik</a></li>
+        <li><a href="/#about">O nas</a></li>
+        <li><a href="/#contact">Kontakt</a></li>
+      </ul>
+      <!-- Mobile navigation toggle button will be added by JavaScript -->
+    </nav>
+
+    <!-- Header -->
+    <header class="posts-header">
+        <div class="container">
+            <h1>Posty</h1>
+            <p>Najnowsze informacje i ogłoszenia z naszego łowiska</p>
+        </div>
     </header>
 
-    <main>
-        <div class="page-header">
-            <div class="container">
-                <h1>Posty</h1>
-                <p>Najnowsze informacje i ogłoszenia z naszego łowiska</p>
-            </div>
-        </div>
-
+    <!-- Main Content -->
+    <main id="main-content">
         <div class="posts-container">
             <?php if (empty($posts)): ?>
                 <div class="no-posts">
@@ -89,7 +104,7 @@
                             <?php echo date('d.m.Y H:i', strtotime($post['created_at'])); ?>
                         </time>
                         <div class="post-content">
-                            <?php echo nl2br(htmlspecialchars($post['description'])); ?>
+                            <?php echo nl2br(htmlspecialchars($post['content'] ?? '')); ?>
                         </div>
                     </article>
                 <?php endforeach; ?>
@@ -98,7 +113,40 @@
     </main>
 
     <footer>
-        <?php include __DIR__ . '/partials/footer.php'; ?>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h3>Łowisko Lipuś</h3>
+                    <p>Twoje miejsce nad wodą</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Przydatne linki</h4>
+                    <ul>
+                        <li><a href="/rules">Regulamin</a></li>
+                        <li><a href="/gallery">Galeria</a></li>
+                        <li><a href="/posts">Posty</a></li>
+                        <li><a href="/privacy-policy">Polityka prywatności</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h4>Obserwuj nas</h4>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/lowiskolipus" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Łowisko wędkarskie - Lipuś | Wszystkie prawa zastrzeżone</p>
+            </div>
+        </div>
     </footer>
+
+    <!-- Back to top button -->
+    <button id="back-to-top" aria-label="Wróć na górę strony">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- JavaScript -->
+    <script src="/assets/js/home.js"></script>
 </body>
 </html> 

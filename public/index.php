@@ -61,6 +61,12 @@ $dispatcher = simpleDispatcher(function(RouteCollector $r) {
     $r->addRoute('GET', '/admin/get-posts', [AdminController::class, 'getPosts']);
     $r->addRoute('POST', '/admin/add-post', [AdminController::class, 'addPost']);
     $r->addRoute('POST', '/admin/delete-post', [AdminController::class, 'deletePost']);
+    
+    // New admin routes for regular posts, gallery posts, and prices
+    $r->addRoute('POST', '/admin/add-regular-post', [AdminController::class, 'addRegularPost']);
+    $r->addRoute('POST', '/admin/add-gallery-post', [AdminController::class, 'addGalleryPost']);
+    $r->addRoute('GET', '/admin/get-prices', [AdminController::class, 'getCurrentPrices']);
+    $r->addRoute('POST', '/admin/update-prices', [AdminController::class, 'updatePrices']);
 });
 
 // 4) Dispatch

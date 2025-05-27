@@ -46,6 +46,7 @@
   <ul>
     <li><a href="/" aria-current="page">Home</a></li>
     <li><a href="/gallery">Galeria</a></li>
+    <li><a href="/posts">Posty</a></li>
     <li><a href="/rules">Regulamin</a></li>
     <li><a href="#prices">Cennik</a></li>
     <li><a href="#about">O nas</a></li>
@@ -195,17 +196,17 @@
           <div class="price-item">
             <div class="price-icon"><i class="fas fa-fish"></i></div>
             <div class="price-name">1 wędka</div>
-            <div class="price-value">25 zł</div>
+            <div class="price-value"><?php echo $prices['price1Wedka'] ?? 25; ?> zł</div>
           </div>
           <div class="price-item">
             <div class="price-icon"><i class="fas fa-fish"></i><i class="fas fa-fish"></i></div>
             <div class="price-name">2 wędki</div>
-            <div class="price-value">40 zł</div>
+            <div class="price-value"><?php echo $prices['price2Wedki'] ?? 40; ?> zł</div>
           </div>
           <div class="price-item">
             <div class="price-icon"><i class="fas fa-fire"></i></div>
             <div class="price-name">Grill</div>
-            <div class="price-value">10 zł</div>
+            <div class="price-value"><?php echo $prices['priceGrill'] ?? 10; ?> zł</div>
           </div>
         </div>
         <div class="price-note">Opłata za wędkowanie jest od osoby wędkującej.</div>
@@ -245,6 +246,7 @@
         <ul>
           <li><a href="/rules">Regulamin</a></li>
           <li><a href="/gallery">Galeria</a></li>
+          <li><a href="/posts">Posty</a></li>
           <li><a href="/privacy-policy">Polityka prywatności</a></li>
           <li><a href="/terms">Warunki korzystania</a></li>
         </ul>
