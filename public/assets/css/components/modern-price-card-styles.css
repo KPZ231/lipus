@@ -1,0 +1,131 @@
+/* MODERN PRICE CARD STYLES styles */
+
+/* ===== MODERN PRICE CARD STYLES ===== */
+.price-card-modern {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: var(--light-text);
+  border-radius: var(--border-radius);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  max-width: 900px;
+  margin: 0 auto 2rem;
+  position: relative;
+  transition: var(--transition);
+}
+
+.price-card-modern:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.price-tag-icon {
+  background-color: rgba(0, 0, 0, 0.1);
+  padding: 1.2rem;
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.price-tag-icon i {
+  color: var(--light-accent);
+}
+
+.price-items {
+  display: flex;
+  justify-content: space-around;
+  padding: 3rem 2rem;
+  flex-wrap: wrap;
+  gap: 2rem;
+  position: relative;
+}
+
+.price-items::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+}
+
+.price-item {
+  text-align: center;
+  min-width: 180px;
+  flex: 1;
+  transition: var(--transition);
+  padding: 1.5rem;
+  border-radius: var(--border-radius);
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.price-item:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-5px);
+}
+
+.price-icon {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: var(--light-accent);
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.price-name {
+  font-size: 1.3rem;
+  margin-bottom: 0.8rem;
+  font-weight: 500;
+}
+
+.price-value {
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--light-text);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.price-note {
+  text-align: center;
+  font-style: italic;
+  padding: 1.5rem 2rem;
+  opacity: 0.9;
+  background-color: rgba(0, 0, 0, 0.1);
+  font-size: 1.1rem;
+}
+
+@media screen and (max-width: 992px) {
+  .price-items {
+    padding: 2rem 1rem;
+    gap: 1.5rem;
+  }
+  
+  .price-item {
+    min-width: 150px;
+    padding: 1.2rem;
+  }
+  
+  .price-value {
+    font-size: 2.5rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .price-items {
+    flex-direction: column;
+    padding: 1.5rem;
+    gap: 1rem;
+  }
+  
+  .price-item {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+}

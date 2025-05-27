@@ -3,21 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Łowisko wędkarskie Lipuś – Wędkowanie, ryby, rekreacja | Kaszuby</title>
-  <meta name="description" content="Łowisko wędkarskie Lipuś na Kaszubach – idealne miejsce na wędkowanie, relaks i kontakt z naturą. Poznaj nasze gatunki ryb, cennik, galerię i zasady łowienia.">
-  <meta name="keywords" content="łowisko, wędkarskie, Lipuś, Kaszuby, wędkarstwo, ryby, jezioro, rekreacja, karp, szczupak, amur, sum, galeria, regulamin, cennik">
-  <meta name="author" content="Łowisko wędkarskie Lipuś">
+  <title>Łowisko wędkarskie Lipuś – Wędkowanie, ryby, rekreacja | Śląsk</title>
+  <meta name="description" content="Łowisko wędkarskie Lipuś w Bujakowie na Śląsku – idealne miejsce na wędkowanie, relaks i kontakt z naturą. Poznaj nasze gatunki ryb, cennik, galerię i zasady łowienia.">
+  <meta name="keywords" content="łowisko, wędkarskie, Lipuś, Bujaków, Śląsk, wędkarstwo, ryby, jezioro, rekreacja, karp, szczupak, amur, sum, galeria, regulamin, cennik">
+  <meta name="author" content="KPZsProductions">
+  <meta name="geo.position" content="50.124191071462966, 18.791943376951688">
+  <meta name="geo.placename" content="Bujaków, Śląsk, Poland">
+  <meta name="geo.region" content="PL-24">
   <link rel="canonical" href="https://twojadomena.pl/">
-  <meta property="og:title" content="Łowisko wędkarskie Lipuś – Wędkowanie na Kaszubach">
-  <meta property="og:description" content="Zapraszamy na łowisko Lipuś – wędkowanie, relaks, piękne widoki i bogactwo ryb. Sprawdź naszą ofertę!">
+  <meta property="og:title" content="Łowisko wędkarskie Lipuś – Wędkowanie na Śląsku">
+  <meta property="og:description" content="Zapraszamy na łowisko Lipuś w Bujakowie – wędkowanie, relaks, piękne widoki i bogactwo ryb. Sprawdź naszą ofertę!">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://twojadomena.pl/">
   <meta property="og:image" content="https://twojadomena.pl/images/lipus-widok.jpg">
+  <meta property="og:site_name" content="Łowisko Lipuś - Bujaków">
+  <meta property="og:locale" content="pl_PL">
   <meta name="robots" content="index, follow">
   <!-- Twitter Card data -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Łowisko wędkarskie Lipuś – Wędkowanie na Kaszubach">
-  <meta name="twitter:description" content="Zapraszamy na łowisko Lipuś – wędkowanie, relaks, piękne widoki i bogactwo ryb. Sprawdź naszą ofertę!">
+  <meta name="twitter:title" content="Łowisko wędkarskie Lipuś – Wędkowanie na Śląsku">
+  <meta name="twitter:description" content="Zapraszamy na łowisko Lipuś w Bujakowie – wędkowanie, relaks, piękne widoki i bogactwo ryb. Sprawdź naszą ofertę!">
   <meta name="twitter:image" content="https://twojadomena.pl/images/lowisko1.jpg">
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -144,7 +149,7 @@
       </div>
       <div class="map-container">
         <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2352.1234567890123!2d17.123456789!3d54.123456789!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4701234567890abc%3A0xabcdef1234567890!2sLipu%C5%9B%2C%20Polska!5e0!3m2!1spl!2spl!4v1710000000000!5m2!1spl!2spl"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2558.040891047264!2d18.791943376951688!3d50.124191071462966!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4716bd69a9ba01ef%3A0x9a56b20e3c28cbf7!2sLudwika%20Spyry%2021%2C%2043-178%20Bujak%C3%B3w!5e0!3m2!1spl!2spl!4v1719493331642!5m2!1spl!2spl"
           width="100%"
           height="450"
           style="border:0;"
@@ -158,12 +163,20 @@
         <div class="address-card">
           <i class="fas fa-map-marker-alt"></i>
           <h3>Adres</h3>
-          <p>Lipuś 123<br>83-424 Lipuś<br>woj. pomorskie</p>
+          <p>Ludwika Spyry 21<br>43-178 Bujaków<br>woj. śląskie</p>
         </div>
         <div class="address-card">
           <i class="fas fa-clock"></i>
           <h3>Godziny otwarcia</h3>
-          <p>Codziennie<br>6:00 - 20:00</p>
+          <div class="opening-hours">
+            <div class="day-hours"><span>Poniedziałek:</span> 07:00–18:00</div>
+            <div class="day-hours"><span>Wtorek:</span> 08:00–18:00</div>
+            <div class="day-hours"><span>Środa:</span> 08:00–18:00</div>
+            <div class="day-hours"><span>Czwartek:</span> 08:00–19:00</div>
+            <div class="day-hours"><span>Piątek:</span> 08:00–19:00</div>
+            <div class="day-hours"><span>Sobota:</span> 07:00–19:00</div>
+            <div class="day-hours"><span>Niedziela:</span> 07:00–19:00</div>
+          </div>
         </div>
       </div>
     </div>
@@ -197,8 +210,6 @@
         </div>
         <div class="price-note">Opłata za wędkowanie jest od osoby wędkującej.</div>
       </div>
-      <p class="cta-text">Zarezerwuj miejsce już dziś i ciesz się wspaniałym dniem nad wodą!</p>
-      <a href="tel:+48123456789" class="btn-primary">Zadzwoń i zarezerwuj</a>
     </div>
   </section>
 
@@ -213,21 +224,10 @@
         <a href="https://www.facebook.com/lowiskolipus" target="_blank" rel="noopener noreferrer">
           <i class="fab fa-facebook"></i> Nasza strona na Facebooku
         </a>
-        <a href="tel:+48123456789">
-          <i class="fas fa-phone"></i> +48 123 456 789
+        <a href="tel:+48723259463">
+          <i class="fas fa-phone"></i> +48 723 259 463
         </a>
-        <a href="mailto:kontakt@lowiskolipus.pl">
-          <i class="fas fa-envelope"></i> kontakt@lowiskolipus.pl
-        </a>
-      </div>
-      <div class="newsletter">
-        <h3>Zapisz się do newslettera</h3>
-        <p>Bądź na bieżąco z nowościami i promocjami</p>
-        <form class="newsletter-form">
-          <input type="email" placeholder="Twój adres e-mail" required aria-label="Adres e-mail do newslettera">
-          <button type="submit" class="btn-primary">Zapisz się</button>
-        </form>
-      </div>
+      </div>      
     </div>
   </section>
 </main>
@@ -253,8 +253,6 @@
         <h4>Obserwuj nas</h4>
         <div class="social-icons">
           <a href="https://www.facebook.com/lowiskolipus" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-          <a href="https://www.instagram.com/lowiskolipus" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-          <a href="https://www.youtube.com/lowiskolipus" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
         </div>
       </div>
     </div>
@@ -278,31 +276,62 @@
   "@context": "https://schema.org",
   "@type": "SportsActivityLocation",
   "name": "Łowisko wędkarskie Lipuś",
-  "description": "Łowisko wędkarskie na Kaszubach oferujące wędkowanie, relaks i kontakt z naturą.",
-  "image": "https://twojadomena.pl/images/lowisko1.jpg",
-  "telephone": "+48123456789",
+  "description": "Łowisko wędkarskie Lipuś w Bujakowie na Śląsku – idealne miejsce na wędkowanie, relaks i kontakt z naturą.",
+  "url": "https://twojadomena.pl/",
+  "image": "https://twojadomena.pl/images/lipus-widok.jpg",
+  "telephone": "+48 123 456 789",
   "email": "kontakt@lowiskolipus.pl",
-  "url": "https://twojadomena.pl",
   "address": {
     "@type": "PostalAddress",
-    "streetAddress": "Lipuś 123",
-    "addressLocality": "Lipuś",
-    "addressRegion": "Pomorskie",
-    "postalCode": "83-424",
+    "streetAddress": "Ludwika Spyry 21",
+    "addressLocality": "Bujaków",
+    "postalCode": "43-178",
+    "addressRegion": "Śląsk",
     "addressCountry": "PL"
   },
   "geo": {
     "@type": "GeoCoordinates",
-    "latitude": "54.123456789",
-    "longitude": "17.123456789"
+    "latitude": "50.124191071462966",
+    "longitude": "18.791943376951688"
   },
-  "openingHoursSpecification": {
-    "@type": "OpeningHoursSpecification",
-    "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-    "opens": "06:00",
-    "closes": "20:00"
-  },
-  "priceRange": "25-40 PLN"
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday"],
+      "opens": "07:00",
+      "closes": "18:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Tuesday", "Wednesday", "Thursday"],
+      "opens": "08:00",
+      "closes": "18:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Friday"],
+      "opens": "08:00",
+      "closes": "19:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Saturday", "Sunday"],
+      "opens": "07:00",
+      "closes": "19:00"
+    }
+  ],
+  "amenityFeature": [
+    {
+      "@type": "LocationFeatureSpecification",
+      "name": "Parking",
+      "value": true
+    },
+    {
+      "@type": "LocationFeatureSpecification",
+      "name": "Sklep wędkarski",
+      "value": true
+    }
+  ]
 }
 </script>
 </body>

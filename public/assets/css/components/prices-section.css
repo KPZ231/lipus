@@ -1,0 +1,77 @@
+/* PRICES SECTION styles */
+
+/* ===== PRICES SECTION ===== */
+#prices {
+  background: linear-gradient(135deg, var(--primary-color), var(--dark-bg));
+  color: var(--light-text);
+  text-align: center;
+  padding: 6rem 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+#prices::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('/images/pattern.png');
+  opacity: 0.05;
+  z-index: 1;
+}
+
+#prices .container {
+  position: relative;
+  z-index: 2;
+}
+
+#prices h2 {
+  color: var(--light-text);
+}
+
+#prices h2::after {
+  background: linear-gradient(90deg, var(--accent-color), var(--light-accent));
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+#prices ul {
+  list-style: none;
+  max-width: 700px;
+  margin: 3rem auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+#prices li {
+  background-color: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-radius: var(--border-radius);
+  padding: 2rem;
+  transition: var(--transition);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#prices li:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+#prices strong {
+  color: var(--light-accent);
+  font-size: 1.8rem;
+  display: block;
+  margin-top: 1rem;
+}
+
+.cta-text {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-top: 3rem;
+  color: var(--light-accent);
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}

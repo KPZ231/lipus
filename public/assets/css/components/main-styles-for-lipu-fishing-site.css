@@ -1,0 +1,19 @@
+/* MAIN STYLES FOR LIPUŚ FISHING SITE styles */
+
+/* ===== MAIN STYLES FOR LIPUŚ FISHING SITE ===== */
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Montserrat', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.8;
+  color: var(--text-color);
+  background-color: var(--background-color);
+  overflow-x: hidden;
+  font-weight: 400;
+}

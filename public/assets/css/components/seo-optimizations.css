@@ -1,0 +1,24 @@
+/* SEO OPTIMIZATIONS styles */
+
+/* ===== SEO OPTIMIZATIONS ===== */
+/* Ensure proper contrast for text */
+body {
+  font-size: 16px; /* Readable base font size */
+}
+
+img {
+  max-width: 100%;
+  height: auto; /* Maintain aspect ratio */
+}
+
+/* Ensure links are distinguishable */
+a:focus, a:hover {
+  text-decoration: underline;
+}
+
+/* Improve page load performance */
+@media print {
+  nav, footer, #back-to-top {
+    display: none;
+  }
+}

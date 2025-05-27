@@ -252,7 +252,7 @@ header p {
 
 .btn-primary:hover {
   background-color: transparent;
-  color: var(--light-text);
+  color: var(--text-color);
   transform: translateY(-5px);
   box-shadow: 0 10px 25px rgba(230, 126, 34, 0.5);
 }
@@ -1026,22 +1026,56 @@ a:focus, a:hover {
 }
 
 .address-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
 }
 
 .address-card i {
-  font-size: 2.5rem;
-  color: var(--secondary-color);
-  margin-bottom: 1rem;
+  font-size: 2rem;
+  color: var(--accent-color);
 }
 
 .address-card h3 {
+  margin-top: 1rem;
   margin-bottom: 1rem;
-  color: var(--primary-color);
 }
 
-/* Price icons */
+/* Opening Hours Styling */
+.opening-hours {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-top: 10px;
+}
+
+.day-hours {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.95rem;
+  padding: 3px 0;
+  border-bottom: 1px dotted rgba(0,0,0,0.1);
+}
+
+.day-hours:last-child {
+  border-bottom: none;
+}
+
+.day-hours span {
+  font-weight: 600;
+  color: var(--primary-color);
+  min-width: 110px;
+}
+
+@media screen and (max-width: 576px) {
+  .day-hours {
+    font-size: 0.9rem;
+  }
+  
+  .day-hours span {
+    min-width: 95px;
+  }
+}
+
 .price-icon {
   font-size: 2.5rem;
   color: var(--light-accent);

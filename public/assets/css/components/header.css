@@ -1,0 +1,72 @@
+/* HEADER styles */
+
+/* ===== HEADER ===== */
+header {
+  background: linear-gradient(rgba(44, 62, 80, 0.7), rgba(44, 62, 80, 0.8)), url('/images/lowisko1.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: var(--light-text);
+  text-align: center;
+  padding: 12rem 2rem 8rem;
+  position: relative;
+  overflow: hidden;
+  margin-top: 0;
+}
+
+header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, transparent 30%, rgba(0, 0, 0, 0.3) 100%);
+  z-index: 1;
+}
+
+header .container {
+  position: relative;
+  z-index: 2;
+}
+
+header h1 {
+  font-size: 4rem;
+  margin-bottom: 1.5rem;
+  color: var(--light-text);
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+  animation: fadeInDown 1.2s ease-out;
+}
+
+header p {
+  font-size: 1.4rem;
+  max-width: 800px;
+  margin: 0 auto 3rem;
+  animation: fadeInUp 1.2s ease-out 0.3s;
+  animation-fill-mode: both;
+  opacity: 0.9;
+}
+
+/* Button styles */
+.btn-primary {
+  display: inline-block;
+  background-color: var(--accent-color);
+  color: var(--light-text);
+  padding: 1rem 2.5rem;
+  border-radius: 50px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  transition: var(--transition);
+  border: 2px solid var(--accent-color);
+  animation: fadeInUp 1.2s ease-out 0.6s;
+  animation-fill-mode: both;
+  box-shadow: 0 4px 15px rgba(230, 126, 34, 0.4);
+}
+
+.btn-primary:hover {
+  background-color: transparent;
+  color: var(--light-text);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(230, 126, 34, 0.5);
+}

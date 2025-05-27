@@ -1,0 +1,12 @@
+/* ACCESSIBILITY styles */
+
+/* ===== ACCESSIBILITY ===== */
+:focus {
+  outline: 3px solid var(--accent-color);
+  outline-offset: 3px;
+}
+
+.focused {
+  outline: 3px solid var(--accent-color);
+  outline-offset: 3px;
+}

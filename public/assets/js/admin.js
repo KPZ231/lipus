@@ -90,9 +90,13 @@ document.addEventListener('DOMContentLoaded', function() {
             const data = await response.json();
 
             if (data.posts) {
-                postsList.innerHTML = data.posts.map(post => `
+                postsList.innerHTML = data.posts.map(post => {
+                    // Ensure image path starts with a slash for absolute path
+                    const imagePath = post.image.startsWith('/') ? post.image : '/' + post.image;
+                    
+                    return `
                     <div class="post-item">
-                        <img src="${post.image}" alt="${post.title}">
+                        <img src="${imagePath}" alt="${post.title}">
                         <div class="post-info">
                             <h3>${post.title}</h3>
                             <p class="category">${getCategoryName(post.category)}</p>
@@ -102,7 +106,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             </button>
                         </div>
                     </div>
-                `).join('');
+                `}).join('');
             }
         } catch (error) {
             showMessage('Wystąpił błąd podczas ładowania postów.', true);

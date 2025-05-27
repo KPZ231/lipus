@@ -151,7 +151,10 @@ class AdminController
             return new JsonResponse(['error' => 'Unauthorized'], 401);
         }
 
-        $postId = $request->request->get('id');
+        // Get the post ID from JSON input
+        $data = json_decode($request->getContent(), true);
+        $postId = $data['id'] ?? null;
+        
         if (!$postId) {
             return new JsonResponse(['error' => 'Post ID is required'], 400);
         }

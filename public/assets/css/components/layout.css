@@ -1,0 +1,17 @@
+/* LAYOUT styles */
+
+/* ===== LAYOUT ===== */
+.container {
+  width: 100%;
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+section {
+  padding: 5rem 0;
+}
+
+.section-padding {
+  padding: var(--section-spacing) 0;
+}

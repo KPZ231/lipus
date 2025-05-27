@@ -1,0 +1,176 @@
+/* RESPONSIVE DESIGN styles */
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media screen and (max-width: 1200px) {
+  :root {
+    --section-spacing: 5rem;
+  }
+  
+  h1 {
+    font-size: 3.2rem;
+  }
+  
+  h2 {
+    font-size: 2.2rem;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  :root {
+    --section-spacing: 4rem;
+  }
+  
+  h1 {
+    font-size: 2.8rem;
+  }
+  
+  h2 {
+    font-size: 2rem;
+  }
+  
+  .container {
+    padding: 0 1.5rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  :root {
+    --section-spacing: 3.5rem;
+  }
+  
+  h1 {
+    font-size: 2.5rem;
+  }
+  
+  h2 {
+    font-size: 1.8rem;
+  }
+  
+  header {
+    padding: 10rem 1rem 6rem;
+  }
+  
+  header p {
+    font-size: 1.2rem;
+  }
+  
+  nav {
+    padding: 0.5rem 1rem;
+  }
+  
+  nav ul {
+    flex-direction: column;
+    display: none;
+    background-color: var(--primary-color);
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  nav.active ul {
+    display: flex;
+  }
+  
+  nav li {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  nav li:last-child {
+    border-bottom: none;
+  }
+  
+  .nav-toggle {
+    display: block;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+  }
+  
+  nav a {
+    padding: 1rem;
+    text-align: center;
+  }
+  
+  nav a::after {
+    bottom: 0.5rem;
+  }
+  
+  #fish-species {
+    padding: 2rem;
+  }
+  
+  #fish-species ul {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 1rem;
+  }
+  
+  #contact {
+    padding: 3rem 1.5rem;
+  }
+  
+  .contact-info {
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  :root {
+    --section-spacing: 3rem;
+  }
+  
+  h1 {
+    font-size: 2.2rem;
+  }
+  
+  h2 {
+    font-size: 1.6rem;
+  }
+  
+  p {
+    font-size: 1rem;
+  }
+  
+  header {
+    padding: 8rem 1rem 5rem;
+  }
+  
+  header p {
+    font-size: 1.1rem;
+  }
+  
+  section {
+    padding: 3rem 0;
+  }
+  
+  #gallery div {
+    flex-direction: column;
+  }
+  
+  #gallery figure {
+    max-width: 100%;
+    margin-bottom: 1.5rem;
+  }
+  
+  #prices ul {
+    grid-template-columns: 1fr;
+  }
+  
+  .btn-primary {
+    padding: 0.8rem 1.8rem;
+    font-size: 0.9rem;
+  }
+  
+  #back-to-top {
+    width: 40px;
+    height: 40px;
+    right: 20px;
+    bottom: 20px;
+  }
+  
+  #contact a {
+    width: 100%;
+    justify-content: center;
+  }
+}

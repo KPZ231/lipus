@@ -1,0 +1,59 @@
+/* Main CSS for Łowisko Lipuś - Generated File */
+
+/* CSS Variables */
+:root {
+  --primary-color: #2c3e50; /* Deep navy blue */
+  --secondary-color: #16a085; /* Teal green */
+  --accent-color: #e67e22; /* Vibrant orange */
+  --light-accent: #f1c40f; /* Sunny yellow */
+  --text-color: #2d3436;
+  --light-text: #ecf0f1;
+  --background-color: #f8f9fa;
+  --card-bg: #ffffff;
+  --dark-bg: #1e272e;
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  --border-radius: 12px;
+  --section-spacing: 6rem;
+}
+
+/* Basic styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Montserrat', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.8;
+  color: var(--text-color);
+  background-color: var(--background-color);
+  overflow-x: hidden;
+  font-weight: 400;
+}
+
+/* Component imports */
+@import 'components/main-styles-for-lipu-fishing-site.css';
+@import 'components/typography.css';
+@import 'components/layout.css';
+@import 'components/skip-link-accessibility.css';
+@import 'components/navigation.css';
+@import 'components/header.css';
+@import 'components/about-section.css';
+@import 'components/fish-species-section.css';
+@import 'components/gallery-section.css';
+@import 'components/map-section.css';
+@import 'components/prices-section.css';
+@import 'components/contact-section.css';
+@import 'components/footer.css';
+@import 'components/back-to-top-button.css';
+@import 'components/animations.css';
+@import 'components/responsive-design.css';
+@import 'components/accessibility.css';
+@import 'components/seo-optimizations.css';
+@import 'components/additional-styles-for-new-elements.css';
+@import 'components/rules-page-styles.css';
+@import 'components/modern-price-card-styles.css';
+@import 'components/rules-page-additional-styles.css';
+@import 'components/gallery-page-styles.css';

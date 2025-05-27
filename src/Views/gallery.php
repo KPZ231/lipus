@@ -3,16 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Galeria zdjęć łowiska wędkarskiego Lipuś | Kaszuby</title>
-  <meta name="description" content="Galeria zdjęć łowiska wędkarskiego Lipuś na Kaszubach. Zobacz piękne krajobrazy, złowione ryby i atmosferę naszego łowiska.">
-  <meta name="keywords" content="galeria, zdjęcia łowiska, Lipuś, Kaszuby, wędkarstwo, ryby, złowione ryby, zdjęcia">
-  <meta name="author" content="Łowisko wędkarskie Lipuś">
+  <title>Galeria zdjęć łowiska wędkarskiego Lipuś | Bujaków, Śląsk</title>
+  <meta name="description" content="Galeria zdjęć łowiska wędkarskiego Lipuś w Bujakowie na Śląsku. Zobacz piękne krajobrazy, złowione ryby i atmosferę naszego łowiska.">
+  <meta name="keywords" content="galeria, zdjęcia łowiska, Lipuś, Bujaków, Śląsk, wędkarstwo, ryby, złowione ryby, zdjęcia">
+  <meta name="author" content="KPZsProductions">
+  <meta name="geo.position" content="50.124191071462966, 18.791943376951688">
+  <meta name="geo.placename" content="Bujaków, Śląsk, Poland">
+  <meta name="geo.region" content="PL-24">
   <link rel="canonical" href="https://twojadomena.pl/gallery">
-  <meta property="og:title" content="Galeria zdjęć łowiska wędkarskiego Lipuś | Kaszuby">
-  <meta property="og:description" content="Zobacz galerię zdjęć z łowiska wędkarskiego Lipuś. Piękne krajobrazy, złowione ryby i atmosfera naszego łowiska.">
+  <meta property="og:title" content="Galeria zdjęć łowiska wędkarskiego Lipuś | Bujaków, Śląsk">
+  <meta property="og:description" content="Zobacz galerię zdjęć z łowiska wędkarskiego Lipuś w Bujakowie. Piękne krajobrazy, złowione ryby i atmosfera naszego łowiska.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://twojadomena.pl/gallery">
   <meta property="og:image" content="https://twojadomena.pl/images/lowisko1.jpg">
+  <meta property="og:site_name" content="Łowisko Lipuś - Bujaków">
+  <meta property="og:locale" content="pl_PL">
   <meta name="robots" content="index, follow">
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -179,12 +184,20 @@
   "@context": "https://schema.org",
   "@type": "ImageGallery",
   "name": "Galeria zdjęć łowiska wędkarskiego Lipuś",
-  "description": "Galeria zdjęć z łowiska wędkarskiego Lipuś na Kaszubach. Zdjęcia krajobrazów, złowionych ryb i wędkarzy.",
+  "description": "Galeria zdjęć z łowiska wędkarskiego Lipuś w Bujakowie na Śląsku. Zdjęcia krajobrazów, złowionych ryb i wędkarzy.",
   "url": "https://twojadomena.pl/gallery",
   "image": "https://twojadomena.pl/images/lowisko1.jpg",
   "publisher": {
     "@type": "Organization",
     "name": "Łowisko wędkarskie Lipuś",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Ludwika Spyry 21",
+      "addressLocality": "Bujaków",
+      "postalCode": "43-178",
+      "addressRegion": "Śląsk",
+      "addressCountry": "PL"
+    },
     "logo": {
       "@type": "ImageObject",
       "url": "https://twojadomena.pl/images/logo.png"

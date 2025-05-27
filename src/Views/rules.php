@@ -3,16 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Regulamin łowiska wędkarskiego Lipuś | Zasady i przepisy</title>
-  <meta name="description" content="Zapoznaj się z regulaminem łowiska wędkarskiego Lipuś. Poznaj zasady wędkowania, obowiązujące przepisy i ceny na naszym łowisku na Kaszubach.">
-  <meta name="keywords" content="regulamin łowiska, zasady wędkowania, przepisy wędkarskie, Lipuś, Kaszuby, łowisko, wędkarstwo">
-  <meta name="author" content="Łowisko wędkarskie Lipuś">
+  <title>Regulamin łowiska wędkarskiego Lipuś | Bujaków, Śląsk</title>
+  <meta name="description" content="Zapoznaj się z regulaminem łowiska wędkarskiego Lipuś. Poznaj zasady wędkowania, obowiązujące przepisy i ceny na naszym łowisku w Bujakowie na Śląsku.">
+  <meta name="keywords" content="regulamin łowiska, zasady wędkowania, przepisy wędkarskie, Lipuś, Bujaków, Śląsk, łowisko, wędkarstwo">
+  <meta name="author" content="KPZsProductions">
+  <meta name="geo.position" content="50.124191071462966, 18.791943376951688">
+  <meta name="geo.placename" content="Bujaków, Śląsk, Poland">
+  <meta name="geo.region" content="PL-24">
   <link rel="canonical" href="https://twojadomena.pl/rules">
-  <meta property="og:title" content="Regulamin łowiska wędkarskiego Lipuś | Zasady i przepisy">
-  <meta property="og:description" content="Zapoznaj się z regulaminem łowiska wędkarskiego Lipuś. Poznaj zasady wędkowania, obowiązujące przepisy i ceny.">
+  <meta property="og:title" content="Regulamin łowiska wędkarskiego Lipuś | Bujaków, Śląsk">
+  <meta property="og:description" content="Zapoznaj się z regulaminem łowiska wędkarskiego Lipuś w Bujakowie. Poznaj zasady wędkowania, obowiązujące przepisy i ceny.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://twojadomena.pl/rules">
   <meta property="og:image" content="https://twojadomena.pl/images/lowisko1.jpg">
+  <meta property="og:site_name" content="Łowisko Lipuś - Bujaków">
+  <meta property="og:locale" content="pl_PL">
   <meta name="robots" content="index, follow">
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -130,7 +135,6 @@
       
       <div class="rules-cta">
         <a href="/" class="btn-primary">Wróć do strony głównej</a>
-        <a href="/#contact" class="btn-secondary">Masz pytania? Skontaktuj się z nami</a>
       </div>
     </div>
   </section>
@@ -182,10 +186,18 @@
   "@context": "https://schema.org",
   "@type": "WebPage",
   "name": "Regulamin łowiska wędkarskiego Lipuś",
-  "description": "Regulamin łowiska wędkarskiego Lipuś na Kaszubach. Zasady korzystania z łowiska i przepisy dla wędkarzy.",
+  "description": "Regulamin łowiska wędkarskiego Lipuś w Bujakowie na Śląsku. Zasady korzystania z łowiska i przepisy dla wędkarzy.",
   "publisher": {
     "@type": "Organization",
     "name": "Łowisko wędkarskie Lipuś",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Ludwika Spyry 21",
+      "addressLocality": "Bujaków",
+      "postalCode": "43-178",
+      "addressRegion": "Śląsk",
+      "addressCountry": "PL"
+    },
     "logo": {
       "@type": "ImageObject",
       "url": "https://twojadomena.pl/images/logo.png"
