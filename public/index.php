@@ -13,6 +13,7 @@ use Kpzsproductions\Lipus\Controllers\AdminController;
 use Kpzsproductions\Lipus\Controllers\ErrorController;
 use Kpzsproductions\Lipus\Controllers\PrivacyController;
 use Kpzsproductions\Lipus\Controllers\SitemapController;
+use Kpzsproductions\Lipus\Controllers\PostsController;
 use Symfony\Component\HttpFoundation\Request;   
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
@@ -43,6 +44,9 @@ $dispatcher = simpleDispatcher(function(RouteCollector $r) {
     // Dodajemy nową trasę dla API Facebooka
     $r->addRoute('GET', '/api/facebook/posts', [GalleryController::class, 'getFacebookPosts']);
     
+    // Dodajemy trasę dla postów
+    $r->addRoute('GET', '/posts', [PostsController::class, 'index']);
+    
     // Dodajemy trasę dla polityki prywatności
     $r->addRoute('GET', '/privacy-policy', [PrivacyController::class, 'index']);
     
@@ -56,8 +60,7 @@ $dispatcher = simpleDispatcher(function(RouteCollector $r) {
     $r->addRoute('GET', '/admin/logout', [AdminController::class, 'logout']);
     $r->addRoute('GET', '/admin/get-posts', [AdminController::class, 'getPosts']);
     $r->addRoute('POST', '/admin/add-post', [AdminController::class, 'addPost']);
-    $r->addRoute('POST', '/admin/delete-post', [AdminController::class, 'deletePost'])
-    ;
+    $r->addRoute('POST', '/admin/delete-post', [AdminController::class, 'deletePost']);
 });
 
 // 4) Dispatch

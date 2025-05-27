@@ -88,7 +88,7 @@
     <div class="container">
         <header>
             <a href="/">
-                <img src="/assets/images/logo.png" alt="Lipus Logo" height="60">
+                <img src="/images/logo-lipus.png" alt="Lipus Logo" height="60">
             </a>
         </header>
         

@@ -93,12 +93,14 @@ class AdminController
         $title = $request->request->get('title');
         $description = $request->request->get('description');
         $category = $request->request->get('category');
+        $important = $request->request->get('important') === 'true' || $request->request->get('important') === '1';
         $image = $request->files->get('image');
 
         // Debug required fields
         error_log('Title: ' . ($title ?? 'null'));
         error_log('Description: ' . ($description ?? 'null'));
         error_log('Category: ' . ($category ?? 'null'));
+        error_log('Important: ' . ($important ? 'true' : 'false'));
         error_log('Image: ' . ($image ? 'present' : 'null'));
 
         if (!$title || !$description || !$image || !$category) {
@@ -122,6 +124,7 @@ class AdminController
                 'title' => $title,
                 'description' => $description,
                 'category' => $category,
+                'important' => $important,
                 'image' => 'uploads/posts/' . $fileName,
                 'created_at' => date('Y-m-d H:i:s')
             ];

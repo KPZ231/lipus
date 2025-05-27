@@ -110,6 +110,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 // Update URL without page reload
                 history.pushState(null, null, targetId);
+                
+                // Close mobile menu if it's open
+                if (nav.classList.contains('active')) {
+                    nav.classList.remove('active');
+                    navToggle.setAttribute('aria-expanded', 'false');
+                }
             }
         });
     });

@@ -37,6 +37,13 @@
                     <label for="description"><i class="fas fa-align-left"></i> Opis:</label>
                     <textarea id="description" name="description" required placeholder="Wprowadź opis posta"></textarea>
                 </div>
+                <div class="form-group checkbox-group">
+                    <label for="important">
+                        <input type="checkbox" id="important" name="important" value="true">
+                        <i class="fas fa-exclamation-circle"></i> Ważny post
+                    </label>
+                    <small>Zaznacz, jeśli ten post ma być oznaczony jako ważny</small>
+                </div>
                 <div class="form-group">
                     <label for="image"><i class="fas fa-image"></i> Zdjęcie:</label>
                     <input type="file" id="image" name="image" accept="image/*" required>

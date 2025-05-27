@@ -29,7 +29,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="icon" type="image/png" href="/images/favicon.ico">
   <!-- CSS -->
   <link rel="stylesheet" href="/assets/css/style.css">
   <!-- Font Awesome for icons -->
@@ -100,7 +100,7 @@
       </div>
       <ul>
         <li><i class="fas fa-fish"></i> Karp</li>
-        <li><i class="fas fa-fish"></i> Karas</li>
+        <li><i class="fas fa-fish"></i> Karaś</li>
         <li><i class="fas fa-fish"></i> Lin</li>
         <li><i class="fas fa-fish"></i> Jesiotr</li>
         <li><i class="fas fa-fish"></i> Amur</li>

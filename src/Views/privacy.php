@@ -9,6 +9,7 @@
     <meta name="author" content="Łowisko wędkarskie Lipuś">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://twojadomena.pl/privacy">
+    <link rel="icon" type="image/png" href="/images/favicon.ico">
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -82,7 +83,7 @@
     <div class="container">
         <header>
             <a href="/">
-                <img src="/assets/images/logo.png" alt="Lipus Logo" height="60">
+            <img src="/images/logo-lipus.png" alt="Lipus Logo" height="60">
             </a>
         </header>
         
