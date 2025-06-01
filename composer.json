@@ -2,6 +2,7 @@
     "name": "kpzsproductions/lipus",
     "description": "A page for, commercial fishing lake located in poland",
     "type": "project",
+    "license": "proprietary",
     "autoload": {
         "psr-4": {
             "Kpzsproductions\\Lipus\\": "src/"
